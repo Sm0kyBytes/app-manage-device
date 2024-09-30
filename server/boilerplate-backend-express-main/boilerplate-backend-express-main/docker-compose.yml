@@ -1,0 +1,26 @@
+services:
+  api-dev:
+    build:
+      context: .
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+    volumes:
+      - ./public/images:/images
+    depends_on:
+      - postgres
+      
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db_sql:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=backend@1234
+      - POSTGRES_USER=backend
+      - POSTGRES_DB=backend
+
+
+

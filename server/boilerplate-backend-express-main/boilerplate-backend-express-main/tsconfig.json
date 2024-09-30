@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types", "./src/types"],  // Make sure your types folder is included here
+    // "paths": {
+    //   "*": ["src/types/*"]
+    // }
+  },
+  "include": ["src/**/*.ts","src/types"],
+  "exclude": ["node_modules"]
+}
