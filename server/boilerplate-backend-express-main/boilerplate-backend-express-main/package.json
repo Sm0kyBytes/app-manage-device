@@ -31,19 +31,23 @@
     "@types/cors": "^2.8.17",
     "@types/express-serve-static-core": "^4.19.5",
     "@types/http-errors": "^2.0.4",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/uuid": "^10.0.0",
+    "@types/validatorjs": "^3.15.5",
     "bcrypt": "^5.1.1",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.12.0",
     "pg-hstore": "^2.3.4",
     "redis": "^4.7.0",
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "validatorjs": "^3.22.1"
   }
 }

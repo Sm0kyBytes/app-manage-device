@@ -1,8 +1,8 @@
 import express, { NextFunction, Request, Response, Router } from "express";
-import { ReponseTitleEnum as r, ReponseStatusCodeEnum as s , ReponseMessageEnum as m } from "../enum/response";
+import { ReponseTitleEnum as r, ReponseStatusCodeEnum as s, ReponseMessageEnum as m } from "../enum/response";
 import { UserModule } from "../../src/modules/users/users.module";
 import { UserRequest } from "../../src/modules/users/dto/request";
-
+import { verifyToken } from "../../src/middlewares/verifyToken";
 
 export class UserController {
     private userModule: UserModule;
@@ -16,6 +16,9 @@ export class UserController {
         this.router.get("/", this.getAll.bind(this));
         this.router.post("/", this.create.bind(this));
         this.router.get("/:id", this.getOne.bind(this));
+        // this.router.get("/", verifyToken, this.getAll.bind(this));
+        // this.router.post("/", this.create.bind(this));
+        // this.router.get("/:id", verifyToken, this.getOne.bind(this));
         // this.router.put("/:id", this.update.bind(this));
         // this.router.delete("/:id", this.delete.bind(this));
     }
@@ -40,10 +43,10 @@ export class UserController {
             next(error);
         }
     }
-    private async create(req: Request<{}, {}, UserRequest>,  res: Response, next: NextFunction) {
+    private async create(req: Request<{}, {}, UserRequest>, res: Response, next: NextFunction) {
         try {
             // const { firstName, lastName, phone, country, email, password } = req.body ;
-            const body = req.body as UserRequest
+            const body = req.body as UserRequest;
             const response = await this.userModule.create(body);
             res.responseJson(s.SUCCESS, r.SUCCESS, m.SUCCESS, response, null);
         } catch (error) {
