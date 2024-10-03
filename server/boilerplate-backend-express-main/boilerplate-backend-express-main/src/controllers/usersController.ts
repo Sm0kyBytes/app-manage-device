@@ -15,7 +15,7 @@ export class UserController {
     private routes() {
         this.router.get("/", this.getAll.bind(this));
         this.router.post("/", this.create.bind(this));
-        this.router.get("/:id", this.getOne.bind(this));
+        this.router.get("/profile", verifyToken, this.getOne.bind(this));
         // this.router.get("/", verifyToken, this.getAll.bind(this));
         // this.router.post("/", this.create.bind(this));
         // this.router.get("/:id", verifyToken, this.getOne.bind(this));
@@ -24,9 +24,9 @@ export class UserController {
     }
     private async getOne(req: Request, res: Response, next: NextFunction) {
         try {
-            const Id = req.params.id;
+            const userId = req?.body?.user?.userId || null;
 
-            const user = await this.userModule.getInfo(Id);
+            const user = await this.userModule.getInfo(userId);
             res.responseJson(s.SUCCESS, r.SUCCESS, m.SUCCESS, user, null);
         } catch (error) {
             next(error);
