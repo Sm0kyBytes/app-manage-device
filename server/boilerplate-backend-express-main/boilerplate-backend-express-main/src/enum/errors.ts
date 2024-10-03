@@ -38,6 +38,8 @@ export enum ErrorEnum {
     INVALID_OTP = "InvalidOTPError",
     // Activate
     MERCHANT_NOT_FOUND = "MerchantNotFoundError",
+    //Device
+    DUPLICATED_DEVICE = "DuplicatedDeviceError",
 
     DUPLICATED_MERCHANT = "DuplicatedMerchantError",
     DUPLICATED_TIN = "DuplicatedTinError",
