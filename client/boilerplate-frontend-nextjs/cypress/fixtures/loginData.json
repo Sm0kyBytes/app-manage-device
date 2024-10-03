@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "description": "Valid user",
+      "email": "validuser@example.com",
+      "password": "correctpassword",
+      "shouldLoginSucceed": true
+    },
+    {
+      "description": "Invalid user - wrong password",
+      "email": "validuser@example.com",
+      "password": "wrongpassword",
+      "shouldLoginSucceed": false
+    },
+    {
+      "description": "Invalid user - non-existent email",
+      "email": "nonexistent@example.com",
+      "password": "randompassword",
+      "shouldLoginSucceed": false
+    }
+  ]
+}

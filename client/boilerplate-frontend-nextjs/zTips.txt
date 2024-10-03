@@ -1,0 +1,5 @@
+yarn dev
+
+npm run cypress:open
+
+npx cypress run --browser chrome     //run report
