@@ -1,23 +1,24 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
 export const AuthContext = () => {
-  const [name, setName] = useState<string>('5555+');
+    const [name, setName] = useState<string>("");
 
-  useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      const decoded = jwt.decode(token) as JwtPayload;
-      if (decoded && decoded.userName) {
-        setName(decoded.userName);
-      }
-    }
-  }, []);
+    useEffect(() => {
+        const token = localStorage.getItem("authToken");
+        if (token) {
+            const decoded = jwt.decode(token) as JwtPayload;
 
-  return {
-    name,
-    setName
-  }
+            if (decoded && decoded.username) {
+                setName(decoded.username);
+            }
+        }
+    }, []);
+
+    return {
+        name,
+        setName,
+    };
 };
