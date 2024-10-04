@@ -20,6 +20,11 @@ export class UserModule {
         const user = await this.userModel.findOne({ where: { email } });
         return user as UserResponse;
     }
+    public async findByPhone(phone: string): Promise<UserResponse> {
+        const user = await this.userModel.findOne({ where: { phone } });
+        return user as UserResponse;
+    }
+
     public async getAll(limit: number, page: number): Promise<UserListResponse> {
         var filter = {};
         var offset: number = 0;
@@ -43,8 +48,10 @@ export class UserModule {
             const errorString: string = Object.values(validateResult.errors).join();
             throw new DefaultError(errorString);
         }
-        const userRes = await this.findByEmail(data.email);
-        if (userRes?.email == data.email) throw new DefaultError(e.DUPLICATED_EMAIL);
+        const isUniqueEmail = await this.findByEmail(data.email);
+        if (isUniqueEmail?.email == data.email) throw new DefaultError(e.DUPLICATED_EMAIL);
+        const isUniquePhone = await this.findByPhone(data.phone);
+        if (isUniquePhone?.phone == data.phone) throw new DefaultError(e.DUPLICATED_PHONE);
 
         const hashedPassword = await bcrypt.hash(data.password, 10);
         data.password = hashedPassword;
