@@ -20,4 +20,8 @@ export const errors = {
     INVALID_PASSWORD: "Invalid Password",
     INVALID_USERNAME_PASSWORD: "Invalid Username or Password",
     LOGIN_FAILED: "Error is occur during login.",
+    // Device
+    DEVICE_NAME_REQUIRED: "Name is required.",
+    DESCRIPTION_REQUIRED: "Description is required.",
+    CATEGORY_REQUIRED: "Category is required.",
 };
